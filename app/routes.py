@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
-from app import app
-from app.forms import LoginForm
+from app import app, db
+from app.forms import LoginForm, RegistrationForm
 from app.models import User
 from werkzeug.urls import url_parse
 
@@ -10,17 +10,16 @@ from werkzeug.urls import url_parse
 @app.route('/index')
 @login_required
 def index():
-	user = {'username': 'Miguel'}
 	posts = [
-	    {
-	        'author': {'username': 'John'},
-	        'body': 'Beautiful day in Portland!'
-	    },
-	    {
-	        'author': {'username': 'Susan'},
-	        'body': 'The Avengers movie was so cool!'
-	    }
-	]
+        {
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
+        }
+    ]
 	return render_template('index.html',title='Home Page', posts=posts)
 
 
@@ -28,6 +27,7 @@ def index():
 def login():
 	if current_user.is_authenticated:
 		return redirect(url_for('index'))
+		#If the user is already logged in the login doesn't happen and they get rerouted to the index
 	form = LoginForm()
 	if form.validate_on_submit():
 		user = User.query.filter_by(username=form.username.data).first()
@@ -36,12 +36,30 @@ def login():
 			return redirect(url_for('login'))
 		login_user(user, remember=form.remember_me.data)
 		next_page = request.args.get(next)
-		if not next_page or url_parse(next_page).netloc !=:
+		if not next_page or url_parse(next_page).netloc != '':
 			next_page = url_for('index')
 		return redirect(next_page)
+		#If everything in the form looks good they're returned to the page they were trying to view, or the index if there wasn't one
 	return render_template('login.html', title='Sign in', form=form)
 
 @app.route('/logout')
 def logout():
 	logout_user()
 	return redirect(url_for('index'))
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+	if current_user.is_authenticated:
+		return redirect(url_for('index'))
+		#If the user is already logged in the registration doesn't happen and they get rerouted to the index
+	form=RegistrationForm()
+	if form.validate_on_submit():
+		user = User(username=form.username.data, email=form.email.data)
+		user.set_password(form.password.data)
+		db.session.add(user)
+		db.session.commit()
+		flash('Congratulations, you are now a registered user!')
+		return redirect(url_for('login'))
+		#If everything in the form is valid then it registers them to the database as a new user and returns them to the login page
+	return render_template('register.html', title='Register', form=form)
+
