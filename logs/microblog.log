@@ -2,3 +2,72 @@
 2018-08-03 18:05:44,818 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
 2018-08-03 18:05:48,331 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
 2018-08-06 03:22:21,419 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
+2018-08-06 03:30:58,317 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
+2018-08-06 03:31:14,521 ERROR: Exception on /follow/bob [GET] [in /Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/ethangundry/dev/microblog/app/routes.py", line 111, in follow
+    return redirect(url_for('user', username=name))
+NameError: name 'name' is not defined
+2018-08-06 03:32:53,119 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
+2018-08-06 03:32:58,504 ERROR: Exception on /user/bob [GET] [in /Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/ethangundry/dev/microblog/app/routes.py", line 81, in user
+    return render_template('user.html', user=user, posts=posts)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/ethangundry/dev/microblog/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/ethangundry/dev/microblog/app/templates/base.html", line 30, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/ethangundry/dev/microblog/app/templates/user.html", line 17, in block "content"
+    <p><a href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/Users/ethangundry/dev/microblog/env/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'unfollow' with values ['username']. Did you mean 'follow' instead?
+2018-08-06 03:35:38,227 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
