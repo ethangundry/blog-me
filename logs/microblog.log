@@ -71,3 +71,6 @@ Traceback (most recent call last):
     raise BuildError(endpoint, values, method, self)
 werkzeug.routing.BuildError: Could not build url for endpoint 'unfollow' with values ['username']. Did you mean 'follow' instead?
 2018-08-06 03:35:38,227 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
+2018-08-07 14:59:18,620 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
+2018-08-07 15:07:10,206 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
+2018-08-07 15:07:13,733 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
