@@ -74,3 +74,5 @@ werkzeug.routing.BuildError: Could not build url for endpoint 'unfollow' with va
 2018-08-07 14:59:18,620 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
 2018-08-07 15:07:10,206 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
 2018-08-07 15:07:13,733 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
+2018-08-07 15:21:29,066 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
+2018-08-07 15:33:08,544 INFO: Microblog startup [in /Users/ethangundry/dev/microblog/app/__init__.py:44]
